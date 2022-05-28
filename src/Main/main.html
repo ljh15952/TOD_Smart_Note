@@ -3,16 +3,28 @@
     <head>
         <meta charset="UTF-8" />
         <title>TSN</title>
+		
+		<script>
+			window.onload = function(){
+				
+			}
+		</script>
+		
     </head>
 
     <body>
+		<h4>
+			선박명
+		</h4>
+		<input id='name'>
+		
         <h4>
             종류
         </h4>
         <input type="radio" name='ship' value="어선" /> 어선
         <input type="radio" name='ship' value="선외기" /> 선외기
-        <input type="radio" name='ship' value="레저보트" /> 어선
-        <input type="radio" name='ship' value="선외기" /> 선외기
+        <input type="radio" name='ship' value="레저보트" /> 레저보트
+        <input type="radio" name='ship' value="고무보트" /> 고무보트
         <input type="radio" name='ship' value="관공선" /> 관공선
         <input type="radio" name='ship' value="해경정" /> 해경정
 
@@ -32,25 +44,40 @@
         <button class="classss" tpye="button" onclick="getRadioBtn()">
             선박 추가
         </button>
-        <div id='result'>asdasd</div>
 
         <script>
-            function getRadioBtn(){
+			var arr = new Array();
+			
+			function getRadioBtn(){
+				const ShipName = document.getElementById('name').value;
 				const ShipNodeList = document.getElementsByName('ship');
 				const WhereNodeList = document.getElementsByName('where');
-
+				
+				var result;
+				
+				result = ShipName;
+				document.getElementById('name').value = null;
 				ShipNodeList.forEach((node) => {
-   					if(node.checked)  {
-     					document.getElementById('result').innerText = node.value;
-    				}
-  				}) 
+					if(node.checked)  {
+						result += ' ' + node.value;
+						node.checked = false;
+					}
+				}) 
 
 				WhereNodeList.forEach((node) => {
-   					if(node.checked)  {
-     					document.getElementById('result').innerText += ' ' + node.value;
-    				}
-  				}) 
-			}						   
+					if(node.checked)  {
+						result += ' ' + node.value;
+						node.checked = false;
+					}
+				}) 
+				
+				arr.push(result);
+				
+				var header = document.createElement('h5');
+				var textNode = document.createTextNode(result);
+				header.appendChild(textNode);
+				document.body.appendChild(header);
+			}		
         </script>
     </body>
 
