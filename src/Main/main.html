@@ -54,8 +54,11 @@
 				const WhereNodeList = document.getElementsByName('where');
 				
 				var result;
+				var curDate = new Date();
 				
-				result = ShipName;
+				result = curDate.getHours() + '' + curDate.getMinutes();
+				
+				result += ' ' + ShipName;
 				document.getElementById('name').value = null;
 				ShipNodeList.forEach((node) => {
 					if(node.checked)  {
