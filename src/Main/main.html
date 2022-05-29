@@ -38,9 +38,24 @@
             선박 추가
         </button>
 
-		 <button class="classss" tpye="button" onclick="getDeleteBtn()">
+		<button class="classss" tpye="button" onclick="getDeleteBtn()">
             전부 삭제
         </button>
+		
+		<button class="classss" tpye="button" onclick="showAllBtn()">
+            전쳬 보기
+        </button>
+		
+		<button class="classss" tpye="button" onclick="showInBtn()">
+            입항만 보기
+        </button>
+		
+		<button class="classss" tpye="button" onclick="showOutBtn()">
+            출항만 보기
+        </button>
+		
+		<!-- 버그 -->
+		<!-- 14시3분이면 143분 으로 나옴 1403분으로 나와야 함 -->
 		
         <script>
 			var header = document.createElement('h5');
@@ -55,6 +70,8 @@
 				var result;
 				var curDate = new Date();
 				
+				var textNode = document.createTextNode(result);
+								
 				result = curDate.getHours() + '' + curDate.getMinutes();
 				
 				result += ' ' + ShipName;
@@ -70,11 +87,13 @@
 					if(node.checked)  {
 						result += ' ' + node.value;
 						node.checked = false;
+						
+						if(node.value == "구시포항 출항"){
+							textNode.id = "구시포항 출항";
+						}
 					}
 				}) 
 				
-				var textNode = document.createTextNode(result);
-				textNode.id = "dd";
 				header.appendChild(textNode);
 				
 				var brr = document.createElement("br");
@@ -86,6 +105,19 @@
 					header.removeChild(header.firstChild);
 				}
 			}
+			
+			function showAllBtn(){
+				alert("1");
+			}
+			
+			function showInBtn(){
+				alert("2");
+			}
+			
+			function showOutBtn(){
+				alert("3");
+			}
+			
         </script>
     </body>
 
