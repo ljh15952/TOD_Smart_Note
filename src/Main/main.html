@@ -43,7 +43,7 @@
         </button>
 		
 		<button class="classss" tpye="button" onclick="showAllBtn()">
-            전쳬 보기
+            전체 보기
         </button>
 		
 		<button class="classss" tpye="button" onclick="showInBtn()">
@@ -58,10 +58,11 @@
 		<!-- 14시3분이면 143분 으로 나옴 1403분으로 나와야 함 -->
 		
         <script>
+			
 			var header = document.createElement('h5');
 			header.id = "Header";
 			document.body.appendChild(header);
-
+			
 			function getRadioBtn(){
 				const ShipName = document.getElementById('name').value;
 				const ShipNodeList = document.getElementsByName('ship');
@@ -70,8 +71,10 @@
 				var result;
 				var curDate = new Date();
 				
-				var textNode = document.createTextNode(result);
-								
+				var textNode;
+							
+				var str;
+				
 				result = curDate.getHours() + '' + curDate.getMinutes();
 				
 				result += ' ' + ShipName;
@@ -89,15 +92,19 @@
 						node.checked = false;
 						
 						if(node.value == "구시포항 출항"){
-							textNode.id = "구시포항 출항";
+							str = "구시포항 출항";
+						}else if(node.value == "구시포항 입항"){
+							str = "구시포항 입항";
 						}
 					}
 				}) 
 				
+				textNode = document.createTextNode(result)
+				textNode.id = str;
 				header.appendChild(textNode);
-				
-				var brr = document.createElement("br");
-				header.appendChild(brr);
+
+				//var brr = document.createElement("br");
+				//header.appendChild(brr);
 			}	
 			
 			function getDeleteBtn(){
@@ -107,7 +114,13 @@
 			}
 			
 			function showAllBtn(){
-				alert("1");
+				let node = header.firstChild;
+				while(node != header.lastChild){
+					if(node.id != "구시포항 출항"){
+						header.removeChild(node);
+					}
+					node = node.nextSibling;
+				}
 			}
 			
 			function showInBtn(){
