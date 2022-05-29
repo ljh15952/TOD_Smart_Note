@@ -3,13 +3,6 @@
     <head>
         <meta charset="UTF-8" />
         <title>TSN</title>
-		
-		<script>
-			window.onload = function(){
-				
-			}
-		</script>
-		
     </head>
 
     <body>
@@ -45,9 +38,15 @@
             선박 추가
         </button>
 
+		 <button class="classss" tpye="button" onclick="getDeleteBtn()">
+            전부 삭제
+        </button>
+		
         <script>
-			var arr = new Array();
-			
+			var header = document.createElement('h5');
+			header.id = "Header";
+			document.body.appendChild(header);
+
 			function getRadioBtn(){
 				const ShipName = document.getElementById('name').value;
 				const ShipNodeList = document.getElementsByName('ship');
@@ -74,13 +73,19 @@
 					}
 				}) 
 				
-				arr.push(result);
-				
-				var header = document.createElement('h5');
 				var textNode = document.createTextNode(result);
+				textNode.id = "dd";
 				header.appendChild(textNode);
-				document.body.appendChild(header);
-			}		
+				
+				var brr = document.createElement("br");
+				header.appendChild(brr);
+			}	
+			
+			function getDeleteBtn(){
+				while(header.firstChild){
+					header.removeChild(header.firstChild);
+				}
+			}
         </script>
     </body>
 
