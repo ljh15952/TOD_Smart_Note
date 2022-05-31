@@ -100,7 +100,9 @@
 				obj = document.getElementById("parent");
            		newDiv = document.createElement("div");
 				newDiv.innerHTML = result;
-				newDiv.setAttribute("id", "myDiv"); // 새롭게 만들어지는 div 태그에 id 값 저장
+				newDiv.name = "Node";
+				newDiv.style = "display:show";
+				newDiv.setAttribute("id", str); // 새롭게 만들어지는 div 태그에 id 값 저장
 				newDiv.style.backgroundColor = "yellow";
 				
 				
@@ -121,9 +123,7 @@
 			}	
 			
 			function getDeleteBtn(){
-				while(header.firstChild){
-					header.removeChild(header.firstChild);
-				}
+				
 			}
 			
 			function showAllBtn(){
@@ -131,14 +131,14 @@
 			}
 			
 			function showInBtn(){
-				//header.style.visibility = "hidden";
-				let node = header.firstChild;
-				while(node != header.lastChild){
-					if(node.id != "구시포항 출항"){
-						node.style.visibility = "hidden";
-					}
-					node = node.nextSibling;
-				}
+				obj = document.getElementById("parent");
+				let node = obj.firstChild;
+				// while(node != header.lastChild){
+				// 	if(node.id != "구시포항 출항"){
+				// 		node.style.display = "none";
+				// 	}
+				// 	node = node.nextSibling;
+				// }
 			}
 			
 			function showOutBtn(){
