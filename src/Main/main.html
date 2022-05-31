@@ -5,7 +5,7 @@
         <title>TSN</title>
     </head>
 
-    <body>
+    <body id = "parent">
 		<h4>
 			선박명
 		</h4>
@@ -58,10 +58,7 @@
 		<!-- 14시3분이면 143분 으로 나옴 1403분으로 나와야 함 -->
 		
         <script>
-			
-			var header = document.createElement('h5');
-			header.id = "Header";
-			document.body.appendChild(header);
+		
 			
 			function getRadioBtn(){
 				const ShipName = document.getElementById('name').value;
@@ -99,12 +96,28 @@
 					}
 				}) 
 				
-				textNode = document.createTextNode(result)
-				textNode.id = str;
-				header.appendChild(textNode);
+				
+				obj = document.getElementById("parent");
+           		newDiv = document.createElement("div");
+				newDiv.innerHTML = result;
+				newDiv.setAttribute("id", "myDiv"); // 새롭게 만들어지는 div 태그에 id 값 저장
+				newDiv.style.backgroundColor = "yellow";
+				
+				
+				newDiv.onclick = function(){
+            		p = this.parentElement; //부모 HTML 태그요소
+                	p.removeChild(this); // 자신을 부모 태그로 부터 제거   
+           		}
 
-				//var brr = document.createElement("br");
-				//header.appendChild(brr);
+            	obj.appendChild(newDiv);
+				
+				// textNode = document.createTextNode(result);
+				// textNode.style = "display:none";
+				// textNode.id = str;
+				// document.body.appendChild(textNode);
+
+				// var brr = document.createElement("br");
+				// header.appendChild(brr);
 			}	
 			
 			function getDeleteBtn(){
@@ -114,17 +127,18 @@
 			}
 			
 			function showAllBtn(){
-				let node = header.firstChild;
-				while(node != header.lastChild){
-					if(node.id != "구시포항 출항"){
-						header.removeChild(node);
-					}
-					node = node.nextSibling;
-				}
+				
 			}
 			
 			function showInBtn(){
-				alert("2");
+				//header.style.visibility = "hidden";
+				let node = header.firstChild;
+				while(node != header.lastChild){
+					if(node.id != "구시포항 출항"){
+						node.style.visibility = "hidden";
+					}
+					node = node.nextSibling;
+				}
 			}
 			
 			function showOutBtn(){
