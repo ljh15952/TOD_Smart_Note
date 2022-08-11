@@ -21,6 +21,17 @@
 		// < Sun Dec 12 2021 12:45:35 GMT-0500 (Eastern Standard Time)
 		// > clearInterval(intervalId);
 		var count = 0;
+		window.onkeydown = (e) =>{
+			if(e.keyCode === 'a'.charCodeAt() - 32){
+				console.log("left");
+			}else if(e.keyCode === 'w'.charCodeAt() - 32){
+				console.log("up");
+			}else if(e.keyCode === 'd'.charCodeAt() - 32){
+				console.log("right");
+			}else if(e.keyCode === 's'.charCodeAt() - 32){
+				console.log("down");
+			}
+		}
 		function asd(){
 			console.log("QWEQWEQWEQ");
 			count++;
