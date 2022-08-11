@@ -11,17 +11,21 @@
 		ctx.fillRect(0,0,100,100);
 		
 		//setInterval(()=> console.log(new Date()),2000);
-		setInterval(()=> console.log(Math.floor(Math.random() * 10)),2000);
+		//setInterval(()=> console.log(Math.floor(Math.random() * 10)),2000);
 		//setInterval(asd,300);
-		setInterval() 함수는 인터벌 아이디(Interval ID)라고 불리는 숫자를 반환하는데요. 인터벌 아이디는 setInterval() 함수를 호출할 때 마다 내부적으로 생성되는 타이머 객체를 가리키고 있습니다. 이 값을 인자로 clearInterval() 함수를 호출하면 코드가 주기적으로 실행되는 것을 중단시킬 수 있습니다.
-
-		> const intervalId = setInterval(() => console.log(new Date()), 2000);
-		< Sun Dec 12 2021 12:45:31 GMT-0500 (Eastern Standard Time)
-		< Sun Dec 12 2021 12:45:33 GMT-0500 (Eastern Standard Time)
-		< Sun Dec 12 2021 12:45:35 GMT-0500 (Eastern Standard Time)
-		> clearInterval(intervalId);
+		// setInterval() 함수는 인터벌 아이디(Interval ID)라고 불리는 숫자를 반환하는데요. 인터벌 아이디는 setInterval() 함수를 호출할 때 마다 내부적으로 생성되는 타이머 객체를 가리키고 있습니다. 이 값을 인자로 clearInterval() 함수를 호출하면 코드가 주기적으로 실행되는 것을 중단시킬 수 있습니다.
+		var a = setInterval(asd,100);
+		// > const intervalId = setInterval(() => console.log(new Date()), 2000);
+		// < Sun Dec 12 2021 12:45:31 GMT-0500 (Eastern Standard Time)
+		// < Sun Dec 12 2021 12:45:33 GMT-0500 (Eastern Standard Time)
+		// < Sun Dec 12 2021 12:45:35 GMT-0500 (Eastern Standard Time)
+		// > clearInterval(intervalId);
+		var count = 0;
 		function asd(){
 			console.log("QWEQWEQWEQ");
+			count++;
+			if(count > 10)
+				clearInterval(a);
 		}
     </script>
   </body>
